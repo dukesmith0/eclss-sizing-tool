@@ -14,6 +14,11 @@ class TestDefaults:
     def test_default_water_recovery(self):
         assert EclssSystem().water_recovery_efficiency == 0.93
 
+    def test_iss_bpa_water_recovery(self):
+        from eclss.constants import WATER_RECOVERY_EFFICIENCY_ISS_BPA
+        sys = EclssSystem(water_recovery_efficiency=WATER_RECOVERY_EFFICIENCY_ISS_BPA)
+        assert sys.water_recovery_efficiency == 0.98
+
     def test_frozen(self):
         with pytest.raises(AttributeError):
             EclssSystem().o2_generation_capacity_kg_hr = 0.5
